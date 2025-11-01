@@ -1,11 +1,11 @@
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgClass, FormsModule, NgFor],
+  imports: [NgClass, FormsModule, NgFor, NgIf],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

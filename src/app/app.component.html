@@ -1,11 +1,8 @@
 <!-- === SIDEBAR === -->
 <div class="sidebar">
-  <!-- BRAND: solo logo -->
   <div class="brand">
     <div class="logo"></div>
   </div>
-
-  <hr style="border-color: rgba(255, 255, 255, 0.05); margin: 12px 0" />
 
   <!-- HISTORIAL -->
   <div class="history">
@@ -27,19 +24,28 @@
 <!-- === MAIN CHAT === -->
 <div class="main-container">
   <main class="chat-wrap">
-    <!-- HEADER FIJO -->
+    <!-- HEADER -->
     <div class="chat-header">
-      <div class="title">Chatbot GenAI</div>
+      <div class="title">Chat Demo</div>
       <div class="actions">
-        <button class="share-btn">📤 Compartir</button>
+        <button class="share-btn">🔗 Compartir</button>
         <button class="menu-btn">⋯</button>
       </div>
     </div>
 
-    <!-- SECCIÓN MENSAJES -->
+    <!-- MENSAJES -->
     <section #messages class="messages">
       <div *ngFor="let msg of messagesList" class="msg" [ngClass]="msg.role">
         <div class="content">{{ msg.text }}</div>
+
+        <!-- Botón Copiar solo para mensajes de assistant -->
+        <button
+          *ngIf="msg.role === 'assistant'"
+          class="copy-btn"
+          title="Copiar"
+        >
+          Copiar
+        </button>
       </div>
     </section>
 

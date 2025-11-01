@@ -91,7 +91,7 @@ body {
   );
 }
 
-/* SETTINGS: igual estilo que history */
+/* SETTINGS: mismo estilo que history */
 .sidebar .settings {
   margin-top: auto;
   display: flex;
@@ -152,7 +152,7 @@ body {
   overflow: hidden;
 }
 
-/* === HEADER FIJO === */
+/* HEADER FIJO */
 .chat-header {
   display: flex;
   justify-content: space-between;
@@ -229,6 +229,7 @@ body {
   border-radius: 14px;
   line-height: 1.4;
   box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
+  position: relative;
 }
 
 .msg.user {
@@ -241,6 +242,30 @@ body {
   align-self: flex-start;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 28px; /* espacio para botón copiar */
+
+  .copy-btn {
+    position: absolute;
+    bottom: 4px;
+    right: 8px;
+    font-size: 10px;
+    padding: 2px 6px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #e6eef8;
+    cursor: pointer;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    opacity: 1;
+    background: rgba(124, 92, 255, 0.2);
+  }
 }
 
 /* === COMPOSER === */
