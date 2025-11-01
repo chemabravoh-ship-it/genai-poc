@@ -1,12 +1,37 @@
+<div class="fullscreen" [class.fade-out]="fade">
+  <div class="circular-light"></div>
+  <div class="circular-light"></div>
+  <div class="circular-light"></div>
+  <div class="fullscreen-content">
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 24px;">
+      <bs-logo
+      symbol=""
+      type="bs"
+      size="md"
+      color="white"
+      class="xs bs symbol"
+      tabindex="0"
+      ></bs-logo>
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <h2>{{ "GenAI Chatbot" | typing: 100 | async }}</h2><span class="cursor"></span>
+      </div>
+    </div>
+    <button (click)="hide()">Chatear</button>
+  </div>
+</div>
 <div class="sidebar">
   <div class="brand">
     <bs-logo
       type="bs"
       size="sm"
       color="white"
-      class="sm bs hydrated"
+      class="sm bs"
       tabindex="0"
     ></bs-logo>
+  </div>
+  <div class="sidebar-actions">
+    <button class="new-chat-btn">➕ Nuevo Chat</button>
+    <button class="search-chat-btn">🔍 Buscar Chat</button>
   </div>
   <div class="history">
     <h2>Historial</h2>
@@ -24,6 +49,14 @@
 <div class="main-container">
   <main class="chat-wrap">
     <div class="chat-header">
+      <bs-logo
+        symbol=""
+        type="bs"
+        size="xs"
+        color="white"
+        class="xs bs symbol"
+        tabindex="0"
+      ></bs-logo>
       <div class="title">GenAI Chatbot</div>
       <div class="actions">
         <button class="share-btn">🔗 Compartir</button>
@@ -32,17 +65,16 @@
     </div>
     <section #messages class="messages">
       <div *ngFor="let msg of messagesList" class="msg" [ngClass]="msg.role">
-        <div class="content">{{ msg.text }}</div>
-        <button
-          *ngIf="msg.role === 'assistant'"
-          class="copy-btn"
-          title="Copiar"
-        >
-          Copiar
-        </button>
+        <ng-container *ngIf="msg.role === 'assistant'; else normalText">
+          {{ msg.text | typing | async }}
+        </ng-container>
+        <ng-template #normalText>
+          {{ msg.text }}
+        </ng-template>
       </div>
     </section>
     <form class="composer" (ngSubmit)="sendMessage()">
+      <button type="button" class="file-btn" title="Añadir archivo">➕</button>
       <input
         [(ngModel)]="userInput"
         name="message"
@@ -50,6 +82,7 @@
         placeholder="Escribe un mensaje..."
       />
       <button type="submit" class="send-btn">Enviar</button>
+      <button type="button" class="voice-btn" title="Dictar por voz">🎤</button>
     </form>
   </main>
 </div>
