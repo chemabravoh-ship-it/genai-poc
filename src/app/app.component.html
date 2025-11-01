@@ -1,44 +1,38 @@
-<!-- === SIDEBAR === -->
 <div class="sidebar">
   <div class="brand">
-    <div class="logo"></div>
+    <bs-logo
+      type="bs"
+      size="sm"
+      color="white"
+      class="sm bs hydrated"
+      tabindex="0"
+    ></bs-logo>
   </div>
-
-  <!-- HISTORIAL -->
   <div class="history">
     <h2>Historial</h2>
     <ul class="history-list">
-      <li><button>💬 Chat sobre Angular</button></li>
-      <li><button>📝 Ideas para proyecto</button></li>
-      <li><button>📄 Resúmenes de texto</button></li>
+      <li><button>💬 Chat sobre Banc Sabadell</button></li>
+      <li><button>💬 Dame un contrato para una cuenta</button></li>
+      <li><button>💬 Dame un contrato</button></li>
     </ul>
   </div>
-
-  <!-- SETTINGS -->
   <div class="settings">
     <button>⚙️ Configuración</button>
     <button>🚪 Cerrar sesión</button>
   </div>
 </div>
-
-<!-- === MAIN CHAT === -->
 <div class="main-container">
   <main class="chat-wrap">
-    <!-- HEADER -->
     <div class="chat-header">
-      <div class="title">Chat Demo</div>
+      <div class="title">GenAI Chatbot</div>
       <div class="actions">
         <button class="share-btn">🔗 Compartir</button>
         <button class="menu-btn">⋯</button>
       </div>
     </div>
-
-    <!-- MENSAJES -->
     <section #messages class="messages">
       <div *ngFor="let msg of messagesList" class="msg" [ngClass]="msg.role">
         <div class="content">{{ msg.text }}</div>
-
-        <!-- Botón Copiar solo para mensajes de assistant -->
         <button
           *ngIf="msg.role === 'assistant'"
           class="copy-btn"
@@ -48,15 +42,13 @@
         </button>
       </div>
     </section>
-
-    <!-- COMPOSER -->
     <form class="composer" (ngSubmit)="sendMessage()">
-      <textarea
+      <input
         [(ngModel)]="userInput"
         name="message"
+        type="text"
         placeholder="Escribe un mensaje..."
-        (input)="autoResize($event)"
-      ></textarea>
+      />
       <button type="submit" class="send-btn">Enviar</button>
     </form>
   </main>

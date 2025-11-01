@@ -1,5 +1,5 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
   imports: [NgClass, FormsModule, NgFor, NgIf],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent {
   userInput = '';
