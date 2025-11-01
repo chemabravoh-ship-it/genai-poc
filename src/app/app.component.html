@@ -1,18 +1,8 @@
 <!-- === SIDEBAR === -->
 <div class="sidebar">
+  <!-- BRAND: solo logo -->
   <div class="brand">
     <div class="logo"></div>
-    <div>
-      <h1>Chat Demo</h1>
-      <div style="font-size: 12px; opacity: 0.8">Angular Edition</div>
-    </div>
-  </div>
-
-  <!-- MODELS -->
-  <div class="models">
-    <button class="active">🧠 GPT‑4o (simulado)</button>
-    <button>🤖 GPT‑3.5 (simulado)</button>
-    <button>🎨 Modo creativo</button>
   </div>
 
   <hr style="border-color: rgba(255, 255, 255, 0.05); margin: 12px 0" />
@@ -37,12 +27,23 @@
 <!-- === MAIN CHAT === -->
 <div class="main-container">
   <main class="chat-wrap">
+    <!-- HEADER FIJO -->
+    <div class="chat-header">
+      <div class="title">Chatbot GenAI</div>
+      <div class="actions">
+        <button class="share-btn">📤 Compartir</button>
+        <button class="menu-btn">⋯</button>
+      </div>
+    </div>
+
+    <!-- SECCIÓN MENSAJES -->
     <section #messages class="messages">
       <div *ngFor="let msg of messagesList" class="msg" [ngClass]="msg.role">
         <div class="content">{{ msg.text }}</div>
       </div>
     </section>
 
+    <!-- COMPOSER -->
     <form class="composer" (ngSubmit)="sendMessage()">
       <textarea
         [(ngModel)]="userInput"

@@ -45,7 +45,6 @@ export class AppComponent {
     textarea.style.height = textarea.scrollHeight + 'px';
   }
 
-  // Método para generar respuestas simuladas
   getSimulatedResponse(): string {
     const responses = [
       '¡Entendido!',
