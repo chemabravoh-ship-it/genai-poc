@@ -3,32 +3,49 @@
   <div class="circular-light"></div>
   <div class="circular-light"></div>
   <div class="fullscreen-content">
-    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 24px;">
-      <bs-logo
-      symbol=""
-      type="bs"
-      size="md"
-      color="white"
-      class="xs bs symbol"
-      tabindex="0"
-      ></bs-logo>
-      <div style="display: flex; justify-content: center; align-items: center;">
-        <h2>{{ "GenAI Chatbot" | typing: 100 | async }}</h2><span class="cursor"></span>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 24px;
+      "
+    >
+      <bs-logo type="bs" size="md" color="white" class="md bs hydrated" tabindex="0"></bs-logo>
+      <div style="display: flex; justify-content: center; align-items: center">
+        <h2>{{ "GenAI Chatbot" | typing : 100 | async }}</h2>
+        <span class="cursor"></span>
       </div>
+    </div>
+    <div>
+      <bs-dropdown
+        class="mb-sm"
+        [options]="[]"
+        id="domain"
+        name="domain"
+        [label]="'Dominio'"
+      >
+      </bs-dropdown>
+      <bs-dropdown
+        [options]="[]"
+        id="subdomain"
+        name="subdomain"
+        [label]="'Subdominio'"
+        disabled
+      >
+      </bs-dropdown>
     </div>
     <button (click)="hide()">Chatear</button>
   </div>
 </div>
 <div class="sidebar">
   <div class="brand">
-    <bs-logo
-      type="bs"
-      size="sm"
-      color="white"
-      class="sm bs"
-      tabindex="0"
-    ></bs-logo>
-  </div>
+  <bs-logo symbol=""type="bs" size="xs" color="white" class="xs bs symbol" tabindex="0"></bs-logo>
+  <button class="collapse-btn" title="Colapsar sidebar">
+    <span class="icon">«</span>
+  </button>
+</div>
   <div class="sidebar-actions">
     <button class="new-chat-btn">➕ Nuevo Chat</button>
     <button class="search-chat-btn">🔍 Buscar Chat</button>
