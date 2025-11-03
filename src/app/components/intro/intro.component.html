@@ -1,0 +1,47 @@
+<div
+  class="fullscreen"
+  [class.fade-out]="fade"
+  [class.widget-mode]="widgetMode"
+>
+  <div class="circular-light"></div>
+  <div class="circular-light"></div>
+  <div class="circular-light"></div>
+  <div class="fullscreen-content">
+    <bs-logo
+      type="bs"
+      size="md"
+      color="white"
+      class="md bs hydrated"
+      tabindex="0"
+    ></bs-logo>
+    <div style="display: flex; justify-content: center; align-items: center">
+      <h2>{{ "GenAI Chatbot" | typing | async }}</h2>
+      <span class="cursor"></span>
+    </div>
+    <div>
+      <bs-dropdown
+        class="mb-sm"
+        [options]="[]"
+        id="domain"
+        name="domain"
+        [label]="'Dominio'"
+      >
+      </bs-dropdown>
+      <bs-dropdown
+        [options]="[]"
+        id="subdomain"
+        name="subdomain"
+        [label]="'Subdominio'"
+        disabled
+      >
+      </bs-dropdown>
+    </div>
+    <bs-switch
+      class="switch-row"
+      [checked]="widgetMode"
+      (bsSwitchChange)="toggleWidget()"
+      >Widget</bs-switch
+    >
+    <button (click)="hide()">Chatear</button>
+  </div>
+</div>
