@@ -1,22 +1,22 @@
-<div class="fullscreen" [class.fade-out]="fade">
+<div
+  class="fullscreen"
+  [class.fade-out]="fade"
+  [class.widget-mode]="widgetMode"
+>
   <div class="circular-light"></div>
   <div class="circular-light"></div>
   <div class="circular-light"></div>
   <div class="fullscreen-content">
-    <div
-      style="
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 24px;
-      "
-    >
-      <bs-logo type="bs" size="md" color="white" class="md bs hydrated" tabindex="0"></bs-logo>
-      <div style="display: flex; justify-content: center; align-items: center">
-        <h2>{{ "GenAI Chatbot" | typing : 100 | async }}</h2>
-        <span class="cursor"></span>
-      </div>
+    <bs-logo
+      type="bs"
+      size="md"
+      color="white"
+      class="md bs hydrated"
+      tabindex="0"
+    ></bs-logo>
+    <div style="display: flex; justify-content: center; align-items: center">
+      <h2>{{ "GenAI Chatbot" | typing | async }}</h2>
+      <span class="cursor"></span>
     </div>
     <div>
       <bs-dropdown
@@ -39,13 +39,23 @@
     <button (click)="hide()">Chatear</button>
   </div>
 </div>
-<div class="sidebar">
+
+<button class="widget-toggle" (click)="toggleWidget()" *ngIf="!widgetMode">
+  💬
+</button>
+
+<!-- SIDEBAR -->
+<div class="sidebar" [class.widget-mode]="widgetMode">
   <div class="brand">
-  <bs-logo symbol=""type="bs" size="xs" color="white" class="xs bs symbol" tabindex="0"></bs-logo>
-  <button class="collapse-btn" title="Colapsar sidebar">
-    <span class="icon">«</span>
-  </button>
-</div>
+    <bs-logo
+      symbol=""
+      type="bs"
+      size="xs"
+      color="white"
+      class="xs bs symbol"
+      tabindex="0"
+    ></bs-logo>
+  </div>
   <div class="sidebar-actions">
     <button class="new-chat-btn">➕ Nuevo Chat</button>
     <button class="search-chat-btn">🔍 Buscar Chat</button>
@@ -63,7 +73,9 @@
     <button>🚪 Cerrar sesión</button>
   </div>
 </div>
-<div class="main-container">
+
+<!-- MAIN CHAT -->
+<div class="main-container" [class.widget-mode]="widgetMode">
   <main class="chat-wrap">
     <div class="chat-header">
       <bs-logo
@@ -78,6 +90,13 @@
       <div class="actions">
         <button class="share-btn">🔗 Compartir</button>
         <button class="menu-btn">⋯</button>
+        <button
+          *ngIf="widgetMode"
+          class="close-widget-btn"
+          (click)="toggleWidget()"
+        >
+          ✖️
+        </button>
       </div>
     </div>
     <section #messages class="messages">
@@ -91,15 +110,21 @@
       </div>
     </section>
     <form class="composer" (ngSubmit)="sendMessage()">
-      <button type="button" class="file-btn" title="Añadir archivo">➕</button>
       <input
         [(ngModel)]="userInput"
         name="message"
         type="text"
         placeholder="Escribe un mensaje..."
       />
-      <button type="submit" class="send-btn">Enviar</button>
-      <button type="button" class="voice-btn" title="Dictar por voz">🎤</button>
+      <div class="composer-actions">
+        <button type="submit" class="send-btn">➤</button>
+        <button type="button" class="file-btn" title="Añadir archivo">
+          ➕
+        </button>
+        <button type="button" class="voice-btn" title="Dictar por voz">
+          🎤
+        </button>
+      </div>
     </form>
   </main>
 </div>

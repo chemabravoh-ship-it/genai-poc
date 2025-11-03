@@ -41,6 +41,12 @@ export class AppComponent {
 
   @ViewChild('textarea') textarea!: ElementRef;
 
+  widgetMode = false;
+
+  toggleWidget() {
+    this.widgetMode = !this.widgetMode;
+  }
+
   sendMessage(): void {
     if (!this.userInput.trim()) return;
     this.messagesList.push({ role: 'user', text: this.userInput });
