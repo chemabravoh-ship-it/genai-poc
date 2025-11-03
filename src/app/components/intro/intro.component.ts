@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { TypingPipe } from '../../pipes/typing.pipe';
 import { AsyncPipe } from '@angular/common';
 import { WidgetService } from '../../services/widget.service';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,

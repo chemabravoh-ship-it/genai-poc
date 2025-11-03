@@ -18,7 +18,7 @@
       <h2>{{ "GenAI Chatbot" | typing | async }}</h2>
       <span class="cursor"></span>
     </div>
-    <div>
+    <!-- <div>
       <bs-dropdown
         class="mb-sm"
         [options]="[]"
@@ -35,13 +35,15 @@
         disabled
       >
       </bs-dropdown>
+    </div> -->
+    <div class="switch">
+      <bs-switch
+        class="switch-row mr-sm"
+        [checked]="widgetMode"
+        (bsSwitchChange)="toggleWidget()"
+      />
+      <span>Widget</span>
     </div>
-    <bs-switch
-      class="switch-row"
-      [checked]="widgetMode"
-      (bsSwitchChange)="toggleWidget()"
-      >Widget</bs-switch
-    >
     <button (click)="hide()">Chatear</button>
   </div>
 </div>

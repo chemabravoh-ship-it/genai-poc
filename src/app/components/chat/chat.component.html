@@ -1,5 +1,5 @@
 <!-- SIDEBAR -->
-<div class="sidebar" [class.widget-mode]="widgetMode">
+<!-- <div class="sidebar" [class.widget-mode]="widgetMode">
   <div class="brand">
     <bs-logo
       symbol=""
@@ -26,21 +26,23 @@
     <button>⚙️ Configuración</button>
     <button>🚪 Cerrar sesión</button>
   </div>
-</div>
+</div> -->
 
 <!-- MAIN CHAT -->
 <div class="main-container" [class.widget-mode]="widgetMode">
   <main class="chat-wrap">
     <div class="chat-header">
-      <bs-logo
-        symbol=""
-        type="bs"
-        size="xs"
-        color="white"
-        class="xs bs symbol"
-        tabindex="0"
-      ></bs-logo>
-      <div class="title">GenAI Chatbot</div>
+      <div class="chat-header-title">
+        <bs-logo
+          symbol=""
+          type="bs"
+          size="xs"
+          color="white"
+          class="xs bs symbol"
+          tabindex="0"
+        ></bs-logo>
+        <div class="title">GenAI Chatbot</div>
+      </div>
       <div class="actions">
         <button class="share-btn">🔗 Compartir</button>
         <button class="menu-btn">⋯</button>
@@ -50,7 +52,7 @@
     <section #messages class="messages">
       <div *ngFor="let msg of messagesList" class="msg" [ngClass]="msg.role">
         <ng-container *ngIf="msg.role === 'assistant'; else normalText">
-          {{ msg.text | typing | async }}
+          <app-user-message [text]="msg.text" (finish)="logFinish()" />
         </ng-container>
         <ng-template #normalText>
           {{ msg.text }}

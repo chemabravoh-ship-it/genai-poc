@@ -1,19 +1,18 @@
-import { NgClass, NgFor, NgIf, AsyncPipe } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ElementRef,
   inject,
-  OnInit,
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TypingPipe } from '../../pipes/typing.pipe';
 import { WidgetService } from '../../services/widget.service';
+import { UserMessageComponent } from './components/user-message.component';
 
 @Component({
   standalone: true,
-  imports: [NgClass, FormsModule, NgFor, NgIf, AsyncPipe, TypingPipe],
+  imports: [NgClass, FormsModule, NgFor, NgIf, UserMessageComponent],
   selector: 'selector-name',
   templateUrl: 'chat.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -63,6 +62,10 @@ export class ChatComponent {
       this.messagesList.push({ role: 'assistant', text: simulatedResponse });
       setTimeout(() => this.autoScroll(), 50);
     }, 500);
+  }
+
+  logFinish(): void {
+    this.autoScroll();
   }
 
   private autoScroll(): void {

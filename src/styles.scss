@@ -11,97 +11,13 @@ html,
 body {
   height: 100%;
   width: 100vw;
-}
-
-body {
-  background: linear-gradient(180deg, #0b1220 0%, #0f1724 100%);
-  color: #ffffff;
-  overflow: hidden;
-}
-
-/* ---------------------- */
-/* 🔹 SIDEBAR */
-/* ---------------------- */
-.sidebar {
-  width: 240px;
-  height: 100vh;
-  background-color: var(--bs-token-color-gamma-blue-500);
-  padding: var(--bs-token-spacing-gamma-sm);
-  display: flex;
-  flex-direction: column;
-  gap: var(--bs-token-spacing-gamma-xxs);
-  z-index: 10;
-}
-
-.sidebar .brand {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding-bottom: var(--bs-token-spacing-gamma-sm);
-}
-
-.sidebar .logo {
-  width: var(--bs-token-spacing-gamma-xl);
-  height: var(--bs-token-spacing-gamma-xl);
-  border-radius: var(--bs-token-spacing-gamma-xs);
-  // background: linear-gradient(135deg, #1e2a47, #24335f);
-  box-shadow: 0 6px 20px #000000;
-}
-
-.sidebar .history h2 {
-  font-size: 14px; /* No variable */
-  margin-bottom: var(--bs-token-spacing-gamma-xxxs);
-  font-weight: 600;
-  color: var(--bs-token-color-gamma-blue-100);
-}
-
-.sidebar .history ul,
-.sidebar-actions {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--bs-token-spacing-gamma-xxxs);
-}
-
-.sidebar .history ul li button,
-.sidebar .settings button,
-.sidebar-actions button {
-  width: 100%;
-  padding: var(--bs-token-spacing-gamma-xxxs) var(--bs-token-spacing-gamma-xxs);
-  border-radius: var(--bs-token-spacing-gamma-xs);
-  border: 1px solid transparent;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  gap: var(--bs-token-spacing-gamma-xxxs);
-  background-color: #ffffff08;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sidebar .history ul li button:hover,
-.sidebar .settings button:hover,
-.sidebar-actions button:hover {
-  background-color: #ffffff02;
-}
-
-.sidebar .settings {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--bs-token-spacing-gamma-xxxs);
+  // background: linear-gradient(180deg, #0b1220 0%, #0f1724 100%);
 }
 
 /* ---------------------- */
 /* 🔹 MAIN CHAT LAYOUT */
 /* ---------------------- */
 .main-container {
-  position: absolute;
-  top: 0;
-  left: 240px; /* Sin variable */
-  right: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -111,11 +27,10 @@ body {
 .chat-wrap {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  width: 900px; /* Sin variable */
+  width: 900px;
   max-width: 90%;
   height: 100%;
-  background: linear-gradient(180deg, #ffffff04, #ffffff03);
-  box-shadow: 0 8px 30px #000000;
+  background: #111111;
   overflow: hidden;
 }
 
@@ -127,22 +42,19 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: var(--bs-token-spacing-gamma-sm);
-  background: #00000040;
+  background: var(--bs-token-color-gamma-blue-600);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid #ffffff0d;
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
-.chat-header bs-logo {
-  display: none;
-}
-
-.chat-header .title {
+.chat-header-title {
+  display: flex;
   font-weight: 600;
-  font-size: 16px; /* No variable */
+  font-size: 16px;
   color: #ffffff;
+  gap: var(--bs-token-spacing-gamma-sm);
 }
 
 .chat-header .actions {
@@ -197,7 +109,7 @@ body {
   padding: var(--bs-token-spacing-gamma-sm) var(--bs-token-spacing-gamma-md);
   border-radius: var(--bs-token-spacing-gamma-lg);
   line-height: 1.4;
-  box-shadow: 0 6px 18px #020617;
+  background-color: #ffffff11;
   position: relative;
   color: #ffffff;
 }
@@ -234,8 +146,7 @@ body {
   align-items: center;
   gap: var(--bs-token-spacing-gamma-xxxs);
   padding: var(--bs-token-spacing-gamma-sm);
-  border-top: 1px solid #ffffff0d;
-  background: #00000040;
+  background: var(--bs-token-color-gamma-blue-600);
   backdrop-filter: blur(8px);
 }
 
@@ -256,7 +167,6 @@ body {
 .composer input:focus {
   outline: none;
   border-color: #006dff;
-  box-shadow: 0 0 0 2px #006dff4d;
   background: #ffffff20;
 }
 
@@ -303,6 +213,7 @@ body {
   background-color: var(--bs-token-color-gamma-blue-600);
   z-index: 9999;
   transition: opacity 2s ease;
+  color: white;
 }
 
 .fullscreen-content {
@@ -311,15 +222,19 @@ body {
   justify-content: center;
   align-items: center;
   gap: var(--bs-token-spacing-gamma-xxxxl);
-  color: white;
   opacity: 0;
   animation: fadeIn 0.4s ease-out 0.1s forwards;
 }
 
+.fullscreen .switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .fullscreen button {
   padding: var(--bs-token-spacing-gamma-xxs) var(--bs-token-spacing-gamma-md);
-  background: #006dff;
-  color: #ffffff;
+  background: var(--bs-token-color-gamma-blue-600);
   border: 1px solid #ffffff;
   border-radius: var(--bs-token-spacing-gamma-xs);
   cursor: pointer;
@@ -489,35 +404,6 @@ body {
     height: 100%;
   }
 
-  .chat-header {
-    justify-content: space-between;
-    gap: var(--bs-token-spacing-gamma-xxxs);
-    background-color: #006dff;
-  }
-
-  .chat-header .title {
-    display: flex;
-    align-items: center;
-    gap: var(--bs-token-spacing-gamma-xxxs);
-  }
-
-  .chat-header bs-logo {
-    display: block;
-    width: 32px; /* Sin variable */
-    height: 32px; /* Sin variable */
-  }
-
-  .sidebar.active {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #0b1220;
-    z-index: 10000;
-    animation: slideIn 0.3s ease forwards;
-  }
-
   @keyframes slideIn {
     from {
       opacity: 0;
@@ -540,10 +426,6 @@ body {
     cursor: pointer;
     opacity: 0.8;
     transition: opacity 0.2s ease;
-  }
-
-  .sidebar .close-btn:hover {
-    opacity: 1;
   }
 }
 
@@ -576,8 +458,8 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: var(--bs-token-color-gamma-blue-500);
-  color: #fff;
+  background: var(--bs-token-color-gamma-blue-600);
+  color: #ffffff;
   border: none;
   border-radius: 50%;
   width: 60px;
@@ -612,13 +494,12 @@ body.widget-mode .widget-toggle {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 400px;
-  height: 600px;
+  width: 600px;
+  height: 800px;
   left: auto;
   top: auto;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 0 30px #000000a0;
   z-index: 9999;
   animation: fadeInWidget 0.4s ease forwards;
 }
@@ -638,17 +519,6 @@ body.widget-mode .widget-toggle {
   width: 100%;
   height: 100%;
   max-width: 100%;
-}
-
-.main-container.widget-mode .chat-header {
-  justify-content: space-between;
-  background-color: #006dff;
-}
-
-.main-container.widget-mode .chat-header bs-logo {
-  display: block;
-  width: 32px;
-  height: 32px;
 }
 
 .main-container.widget-mode .composer {
